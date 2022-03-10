@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/10 13:55:32 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/10 14:33:41 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <string.h>
-# include <mlx.h>
+# include "mlx/mlx.h"
 # include "libft/libft.h"
 
 int		main(void);

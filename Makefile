@@ -3,39 +3,41 @@ HEADER	= cub3d.h
 
 CC		= cc
 FLAGS	= -Wall -Werror -Wextra
-CFLAGS	= $(FLAGS) -I.
+CFLAGS	= $(FLAGS) -I. -Imlx -Ilibft
 OPTFLAGS = -O2
 
 SRC		= main.c \
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
-LIBFT_OBJS	= $(LIBFT:%.c=%.o)
-LIBFT_A		= libft/libft.a
-
-.PHONY:	all clean fclean re libft
+.PHONY:	all clean fclean re libft mlx
 
 .o: .c $(HEADER)
 	$(CC) $(CFLAGS) $(OPTFLAGS) -c $< -o $@
 
-all:	libft ${NAME}
+all:	mlx libft ${NAME}
 
 $(NAME): $(OBJ) $(HEADER)
-		$(CC) $(OBJ) $(LIBFT_A) -o $@
+		$(CC) $(OBJ) -Llibft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
+
+mlx:
+	make -C mlx/
 
 libft:
-	make -C libft
-		
+	make -C libft/
+
 clean:
 		@rm -f $(OBJ)
-		make -C libft clean
+		make -C libft/ clean
+		make -C mlx/ clean
 		
 fclean:	clean
 		@rm -f ${NAME}
+		rm -f libft/libft.a
+		rm -f mlx/libmlx.a
 		rm -rf a.out*
 		rm -rf */a.out*
 		rm -rf *.gch
 		rm -rf */*.gch
-		rm -f libft/libft.a
 		
 re:		fclean all
