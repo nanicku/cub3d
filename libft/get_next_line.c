@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "libft.h"
 
 static void	ft_strclr(char **s)
 {
