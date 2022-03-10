@@ -21,10 +21,10 @@ $(NAME): $(OBJ) $(HEADER)
 		$(CC) $(OBJ) -Llibft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
 
 mlx:
-	make -C mlx/
+		make -C mlx/
 
 libft:
-	make -C libft/
+		make -C libft/
 
 clean:
 		@rm -f $(OBJ)
