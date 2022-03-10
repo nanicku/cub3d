@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/10 13:08:41 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/10 13:55:32 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@
 # include <string.h>
 # include <mlx.h>
 # include "libft/libft.h"
+
+int		main(void);
 
 #endif

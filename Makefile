@@ -28,6 +28,7 @@ libft:
 		
 clean:
 		@rm -f $(OBJ)
+		make -C libft clean
 		
 fclean:	clean
 		@rm -f ${NAME}
@@ -35,5 +36,6 @@ fclean:	clean
 		rm -rf */a.out*
 		rm -rf *.gch
 		rm -rf */*.gch
+		rm -f libft/libft.a
 		
 re:		fclean all
