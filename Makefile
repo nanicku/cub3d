@@ -1,30 +1,24 @@
 NAME	= cub3d
+HEADER	= cub3d.h
 
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra
-OBJ = $(SRC:%.c=%.o)
+FLAGS	= -Wall -Werror -Wextra
+CFLAGS	= $(FLAGS) -I.
+OPTFLAGS = -O2
+
+SRC		= main.c \
+
+OBJ = $(patsubst %.c, %.o, $(SRC))
 
 LIBFT_OBJS	= $(LIBFT:%.c=%.o)
-
-SRC		= src/ft_atoi.c \
-		src/main.c \
-		src/monit_dead.c \
-		src/parser_init.c \
-		src/philo_life.c \
-		src/philo_time.c \
-		src/start_philo.c \
-		
+LIBFT_A		= libft/libft.a
 
 .PHONY:	all clean fclean re libft
 
-HEADER		= cub3d.h 
-
-LIBFT_A		= libft/libft.a
-
 .o: .c $(HEADER)
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $(OPTFLAGS) -c $< -o $@
 
-all:	${NAME}
+all:	libft ${NAME}
 
 $(NAME): $(OBJ) $(HEADER)
 		$(CC) $(OBJ) $(LIBFT_A) -o $@
@@ -33,11 +27,10 @@ libft:
 	make -C libft
 		
 clean:
-		rm -f ${OBJ}
-		rm -f src_bonus/*.o
+		@rm -f $(OBJ)
 		
 fclean:	clean
-		rm -f ${NAME}
+		@rm -f ${NAME}
 		rm -rf a.out*
 		rm -rf */a.out*
 		rm -rf *.gch
