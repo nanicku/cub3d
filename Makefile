@@ -2,6 +2,7 @@ NAME	= cub3d
 
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra
+OBJ = $(SRC:%.c=%.o)
 
 LIBFT_OBJS	= $(LIBFT:%.c=%.o)
 

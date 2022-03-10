@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 13:03:24 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/10 13:04:51 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/10 13:13:33 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32
+# endif
 
 size_t	ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -57,4 +59,4 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		get_next_line(int fd, char **line);
 
-# endif
+#endif

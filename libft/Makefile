@@ -8,12 +8,15 @@ LIST = ft_isalnum.c ft_isalpha.c ft_isdigit.c \
 		ft_memchr.c ft_memcmp.c ft_atoi.c ft_calloc.c ft_strdup.c \
 		ft_substr.c ft_strjoin.c ft_putchar_fd.c ft_strmapi.c \
 		ft_putstr_fd.c ft_putnbr_fd.c ft_putendl_fd.c ft_strtrim.c \
-		ft_itoa.c ft_split.c ft_strcpy get_next_line.c
+		ft_itoa.c ft_split.c ft_strcpy.c get_next_line.c
 
 OBJ = $(patsubst %.c, %.o, $(LIST))
 
 OPTFLAGS = -O2
 FLAGS = -Wall -Werror -Wextra
+CFLAGS	= $(FLAGS) -I.
+
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
@@ -21,7 +24,7 @@ $(NAME): $(OBJ) $(HEAD)
 	ar rcs $(NAME) $?
 
 %.o: %.c $(HEAD)
-	gcc $(FLAGS) $(OPTFLAGS) -c $< -o $@
+	cc $(CFLAGS) $(OPTFLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
@@ -31,4 +34,3 @@ fclean: clean
 
 re: fclean all
 	
-.PHONY: all clean fclean re

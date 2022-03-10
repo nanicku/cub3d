@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/09 14:28:10 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/10 13:08:41 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <errno.h>
 # include <string.h>
 # include <mlx.h>
-# include "gnl/get_next_line.h"
 # include "libft/libft.h"
 
 #endif
