@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/10 14:33:41 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/11 11:49:35 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,25 @@
 # include "mlx/mlx.h"
 # include "libft/libft.h"
 
-int		main(void);
+typedef struct s_win
+{
+	void	*mlx;
+	void	*win;
+}	t_win;
+
+typedef struct s_player
+{
+	int		x;
+	int		y;
+	float	dir;
+}	t_player;
+
+typedef struct s_data
+{
+	t_win		win;
+	t_player	player;
+}	t_data;
+
+int		main(int argc, char **argv);
 
 #endif
