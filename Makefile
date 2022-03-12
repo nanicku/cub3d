@@ -7,6 +7,10 @@ CFLAGS	= $(FLAGS) -I. -Imlx -Ilibft
 OPTFLAGS = -O2
 
 SRC		= main.c \
+			parsing/init_data.c \
+			parsing/parser_map.c \
+			parsing/parser_map2.c \
+			parsing/color.c \
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
