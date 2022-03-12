@@ -21,10 +21,10 @@ CFLAGS	= $(FLAGS) -I.
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEAD)
-	ar rcs $(NAME) $?
+	@ar rcs $(NAME) $?
 
 %.o: %.c $(HEAD)
-	cc $(CFLAGS) $(OPTFLAGS) -c $< -o $@
+	@cc $(CFLAGS) $(OPTFLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)

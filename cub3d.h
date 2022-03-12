@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/11 11:49:35 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/12 14:57:02 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_player
 {
 	int		x;
 	int		y;
-	float	dir;
+	char	dir;
 }	t_player;
 
 typedef struct s_data
