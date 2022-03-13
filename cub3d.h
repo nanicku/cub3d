@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 14:19:13 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 17:29:44 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <string.h>
 # include "mlx/mlx.h"
 # include "libft/libft.h"
+
+# define W_WIDTH 	800
+# define W_HEIGHT	600
 
 typedef struct s_win
 {
@@ -36,10 +39,13 @@ typedef struct s_player
 
 typedef struct s_map
 {
-	char	**map_arr;		//карта-массив
+	char	**map_arr;
 	int		f_color;
 	int		c_color;
-	char	**texture_addr;
+	char	*no_tex;
+	char	*so_tex;
+	char	*ea_tex;
+	char	*we_tex ;
 }	t_map;
 
 typedef struct s_data
@@ -59,6 +65,7 @@ void	parse_map(t_data *data, char *line);
 void	check_file_format(const char *map_path, int fd);
 int		check_tex_and_color(t_data *data, char *line);
 int		parse_textures(t_data *data, char *str);
+void	parsing_tex(t_data *data, char *str);
 int		parse_colors(t_data *data, char *str);
 int		ft_natoi(const char *str, int len);
 int		color_range(char *str, int *i, int *comma);

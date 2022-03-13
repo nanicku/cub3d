@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:56:56 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 11:51:07 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 17:05:51 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,25 @@
 
 static void print_data(t_data *data)
 {
-	int	x = 0;
 	int	y = 0;
 
 	printf("%d\n", data->player.x);
 	printf("%d\n", data->player.y);
 	printf("%c\n", data->player.dir);
+	printf("\n");
 	printf("%d\n", data->map.f_color);
 	printf("%d\n", data->map.c_color);
-	while (x < 4)
-	{
-		printf("%s\n", data->map.texture_addr[x++]);
-	}
+	printf("\n");
+	printf("%s\n", data->map.no_tex);
+	printf("%s\n", data->map.so_tex);
+	printf("%s\n", data->map.ea_tex);
+	printf("%s\n", data->map.we_tex);
+	printf("\n");
 	while (data->map.map_arr[y] != '\0')
 	{
 		printf("%s\n", data->map.map_arr[y++]);
 	}
+	printf("\n");
 }
 
 static int	error_arg(void)

@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 18:14:08 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 14:13:56 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 16:56:01 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ void	check_file_format(const char *map_path, int fd)
 		error_exit(6);
 }
 
-int		check_tex_and_color(t_data *data, char *line)
+int	check_tex_and_color(t_data *data, char *line)
 {
 	if (parse_textures(data, line) || parse_colors(data, line))
 		return (1);
-	else if (!data->map.texture_addr[0] || !data->map.texture_addr[1]
-		|| !data->map.texture_addr[2] || !data->map.texture_addr[3]
+	else if (!data->map.no_tex || ft_strlen(data->map.no_tex) == 0
+		|| !data->map.so_tex || ft_strlen(data->map.so_tex) == 0
+		|| !data->map.ea_tex || ft_strlen(data->map.ea_tex) == 0
+		|| !data->map.we_tex || ft_strlen(data->map.we_tex) == 0
 		|| data->map.f_color == -1 || data->map.c_color == -1)
 		error_exit(2);
 	return (0);

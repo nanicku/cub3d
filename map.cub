@@ -1,12 +1,12 @@
 NO ./textures/1.xpm
 SO ./textures/2.xpm
-WE ./textures/3.xpm
+
 EA ./textures/4.xpm
 
 F 222,252,249
 C 204,168,233
 
-
+WE ./textures/3.xpm
 
 1111111
 1000111
