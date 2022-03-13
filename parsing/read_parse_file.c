@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 18:14:08 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 16:56:01 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 18:37:59 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	check_file_format(const char *map_path, int fd)
 	size_t	len;
 
 	if (fd < 0)
-		error_exit(4);
+		error_exit("Reading failed!\n");
 	len = ft_strlen(map_path);
 	if (len)
 		len--;
@@ -26,7 +26,7 @@ void	check_file_format(const char *map_path, int fd)
 	if (!ft_strcmp(map_path + len + 1, "cub"))
 		return ;
 	else
-		error_exit(6);
+		error_exit("File not .cub\n");
 }
 
 int	check_tex_and_color(t_data *data, char *line)
@@ -38,7 +38,7 @@ int	check_tex_and_color(t_data *data, char *line)
 		|| !data->map.ea_tex || ft_strlen(data->map.ea_tex) == 0
 		|| !data->map.we_tex || ft_strlen(data->map.we_tex) == 0
 		|| data->map.f_color == -1 || data->map.c_color == -1)
-		error_exit(2);
+		error_exit("Arguments error!\n");
 	return (0);
 }
 
@@ -64,7 +64,7 @@ void	parser_line(t_data *data, char *line)
 			return ;
 		}
 		else
-			error_exit(2);
+			error_exit("Arguments error!\n");
 	}
 }
 
@@ -80,9 +80,9 @@ void	read_and_parse_file(t_data *data, const char *map_file)
 	{
 		ret = get_next_line(fd, &line);
 		if (ret < 0)
-			error_exit(8);
+			error_exit("Not reading file\n");
 		if (line == NULL)
-			error_exit(2);
+			error_exit("Arguments error!\n");
 		parser_line(data, line);
 		free(line);
 		if (ret == 0)
@@ -90,5 +90,5 @@ void	read_and_parse_file(t_data *data, const char *map_file)
 	}
 	close(fd);
 	if (data->map.map_arr == NULL)
-		error_exit(7);
+		error_exit("No map!\n");
 }

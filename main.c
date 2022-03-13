@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:56:56 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 17:05:51 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 18:24:42 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,23 +35,15 @@ static void print_data(t_data *data)
 	printf("\n");
 }
 
-static int	error_arg(void)
-{
-	ft_putstr_fd("error: arg.. Please, usage: ./cub3D [path to map]\n", 1);
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_data	*data;
 
 	if (argc != 2)
 	{
-		error_arg();
+		printf(YELLOW "Error\nPlease, usage: ./cub3D [path to map]\n");
 		return (0);
 	}
-	printf("Hello, I'm here.. \n");
-	printf ("%s\n", argv[1]);
 	data = init_data();
 	read_and_parse_file(data, argv[1]);
 	print_data(data);

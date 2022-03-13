@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 17:29:44 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 18:37:17 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,21 @@
 
 # define W_WIDTH 	800
 # define W_HEIGHT	600
+
+// colors
+# define RED		"\033[31;1m"
+# define YELLOW		"\033[33;1m"
+# define RESET		"\033[0m"
+# define GREEN		"\033[32;1m"
+
+// keys
+# define W			13
+# define A			0
+# define S			1
+# define D			2
+# define LEFT		123
+# define RIGHT		124
+# define ESC		53
 
 typedef struct s_win
 {
@@ -59,7 +74,7 @@ int		main(int argc, char **argv);
 t_data	*init_data(void);
 void	free_data(t_data *data);
 void	read_and_parse_file(t_data *data, const char *map_file);
-void	error_exit(int err);
+void	error_exit(char *str);
 void	parser_line(t_data *data, char *line);
 void	parse_map(t_data *data, char *line);
 void	check_file_format(const char *map_path, int fd);
