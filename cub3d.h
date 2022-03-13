@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/12 21:18:22 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 10:43:29 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	parser_file(t_data *data, const char *argv);
 void	error_exit(int err);
 void	read_next_line(t_data *data, char *line);
 void	parse_map(t_data *data, char *line);
+int		check_file_format(const char *map_path, int fd);
 int		parse_textures(t_data *data, char *str);
 int		parse_colors(t_data *data, char *str);
 int		init_map(t_data *data, char *line);

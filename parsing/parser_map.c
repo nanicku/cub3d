@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 18:14:08 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/12 21:22:56 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 10:49:12 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,15 @@ void	error_exit(int err)
 	exit(1);
 }
 
-static int	check_file_format(const char *map_path)
+int	check_file_format(const char *map_path, int fd)
 {
 	size_t	len;
 
+	if (fd < 0)
+	{
+		printf("Reading failed!\n");
+		exit (1);
+	}
 	len = ft_strlen(map_path);
 	if (len)
 		len--;
@@ -39,7 +44,11 @@ static int	check_file_format(const char *map_path)
 		len--;
 	if (!ft_strcmp(map_path + len + 1, "cub"))
 		return (0);
-	return (-1);
+	else
+	{
+		printf("error: file not .cub\n");
+		exit(1);
+	}
 }
 
 void	parse_map(t_data *data, char *line)
@@ -70,15 +79,12 @@ void	parse_map(t_data *data, char *line)
 	data->map.map_arr[1] = NULL;
 }
 
-void	read_next_line(t_data *data, char *line)
+void	parser_line(t_data *data, char *line)
 {
 	int	i;
 
 	if (line == NULL)
-	{
-		printf("Arguments error!\n");
-		exit (1);
-	}
+		error_exit(2);
 	if (data->map.map_arr != NULL)
 	{
 		parse_map(data, line);
@@ -104,21 +110,12 @@ void	parser_file(t_data *data, const char *map_file)
 	int		ret;
 	char	*line;
 
-	if (check_file_format(map_file) == -1)
-	{
-		printf("error: file not .cub\n");
-		exit(1);
-	}
 	fd = open(map_file, O_RDONLY);
-	if (fd < 0)
-	{
-		printf("Reading failed!\n");
-		exit (1);
-	}
+	check_file_format(map_file, fd);
 	while (1)
 	{
 		ret = get_next_line(fd, &line);
-		read_next_line(data, line);
+		parser_line(data, line);
 		free(line);
 		if (ret == 0)
 			break ;
