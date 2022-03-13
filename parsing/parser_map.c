@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 20:54:39 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 18:36:26 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 18:53:47 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	parse_map(t_data *data, char *line)
 	{
 		while (data->map.map_arr[i])
 			i++;
-		tmp = (char **)ft_calloc(i + 2, sizeof(char *));
+		tmp = (char **)malloc(sizeof(char *) * (i + 2));
 		if (!tmp)
 			error_exit("Malloc failed!\n");
 		tmp[i + 1] = NULL;
@@ -95,7 +95,7 @@ void	parse_map(t_data *data, char *line)
 		data->map.map_arr = tmp;
 		return ;
 	}
-	data->map.map_arr = (char **)ft_calloc(2, sizeof(char *));
+	data->map.map_arr = (char **)malloc(sizeof(char *) * 2);
 	data->map.map_arr[0] = ft_strdup(line);
 	data->map.map_arr[1] = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 21:08:16 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/12 21:11:24 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 19:04:57 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	color_range(char *str, int *i, int *comma)
 	while (str[*i] == ' ' || str[*i] == '\t')
 		(*i)++;
 	if (!ft_isdigit(str[*i]) || (str[*i] == '0' && ft_isdigit(str[*i + 1])))
-		error_exit(3);
+		error_exit("Invalid color!\n");
 	j = *i;
 	while (ft_isdigit(str[*i]))
 		(*i)++;
 	temp = ft_natoi(str + j, *i - j);
 	if (*i - j > 3 || temp > 255)
-		error_exit(3);
+		error_exit("Invalid color!\n");
 	while (str[*i] == ' ' || str[*i] == '\t')
 		(*i)++;
 	if (*comma == 0 && str[*i] == '\0')
@@ -52,7 +52,7 @@ int	color_range(char *str, int *i, int *comma)
 		(*i)++;
 		return (temp);
 	}
-	error_exit(3);
+	error_exit("Invalid color!\n");
 	return (0);
 }
 
