@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:56:56 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 10:40:22 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 11:51:07 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ int	main(int argc, char **argv)
 	printf("Hello, I'm here.. \n");
 	printf ("%s\n", argv[1]);
 	data = init_data();
-	
-	parser_file(data, argv[1]);
+	read_and_parse_file(data, argv[1]);
 	print_data(data);
 	free_data(data);
 	return (0);

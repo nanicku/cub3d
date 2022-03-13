@@ -8,9 +8,10 @@ OPTFLAGS = -O2
 
 SRC		= main.c \
 			parsing/init_data.c \
+			parsing/read_parse_file.c \
 			parsing/parser_map.c \
-			parsing/parser_map2.c \
 			parsing/color.c \
+			parsing/errors_parsing.c \
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
