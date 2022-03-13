@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 16:29:06 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 18:33:46 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 18:43:16 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_data	*init_data(void)
 
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
-		error_exit("Error with malloc\n");
+		error_exit("Malloc failed!\n");
 	// data->win.mlx = mlx_init();
 	// data->win.win = mlx_new_window(data->win.mlx, W_WIDTH, W_HEIGHT, "cub3d");
 	// data->img.img = mlx_new_image(data->win.mlx, W_WIDTH, W_HEIGHT);
