@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 16:29:06 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 18:43:16 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/13 19:11:37 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ t_data	*init_data(void)
 
 void	free_data(t_data *data)
 {	
+	int	i;
+
+	i = -1;
+	while (data->map.map_arr[++i])
+		free(data->map.map_arr[i]);
+	free(data->map.map_arr);
 	free(data->map.no_tex);
 	free(data->map.so_tex);
 	free(data->map.ea_tex);
