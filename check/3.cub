@@ -7,8 +7,8 @@ SO ./textures/south.xpm
 
 
 F 222,			252,+++249
-WE ./textures/west.xpm
-EA ./textures/east.xpm
+WE ./textures/west.xpm     
+EA 		    ./textures/east.xpm
 
 C 204,      1 68        ,+2    33
 

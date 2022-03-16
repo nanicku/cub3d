@@ -11,6 +11,7 @@ SRC		= main.c \
 			parsing/read_parse_file.c \
 			parsing/parser_map.c \
 			parsing/color.c \
+			parsing/texture.c \
 			parsing/errors_parsing.c \
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
