@@ -6,13 +6,13 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 21:08:16 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 10:16:45 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/16 11:37:27 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	rgb_to_hex(int red, int green, int blue)
+static int	rgb_to_hex(int red, int green, int blue)
 {
 	return ((((red * 256) + green) * 256) + blue);
 }

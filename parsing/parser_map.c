@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 20:54:39 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 09:44:49 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/16 11:47:25 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ int	parse_textures(t_data *data, char *str)
 		|| ft_strncmp(str, "WE ", 3) == 0 || ft_strncmp(str, "EA ", 3) == 0)
 	{
 		parsing_tex(data, str);
+		if (data->map.no_tex)
+			check_tex(data->map.no_tex, data);
+		if (data->map.so_tex)
+			check_tex(data->map.so_tex, data);
+		if (data->map.ea_tex)
+			check_tex(data->map.ea_tex, data);
+		if (data->map.no_tex)
+			check_tex(data->map.we_tex, data);
 		return (1);
 	}
 	return (0);

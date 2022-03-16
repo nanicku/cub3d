@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 09:57:48 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/16 11:37:51 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ int		parse_textures(t_data *data, char *str);
 void	parsing_tex(t_data *data, char *str);
 int		parse_colors(t_data *data, char *str);
 int		ft_natoi(const char *str, int len);
-int		color_range(char *str, int *i, int *comma);
 int		color_converting(char *str);
 void	free_str_arr(char **str_arr);
 
