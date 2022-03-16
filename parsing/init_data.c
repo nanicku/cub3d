@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 16:29:06 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 19:11:37 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/16 09:57:33 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,17 @@ void	free_data(t_data *data)
 	free(data->map.ea_tex);
 	free(data->map.we_tex);
 	free(data);
+}
+
+void	free_str_arr(char **str_arr)
+{
+	size_t	i;
+
+	i = 0;
+	while (str_arr[i])
+	{
+		free(str_arr[i]);
+		i++;
+	}
+	free(str_arr);
 }

@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 20:54:39 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 18:53:47 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/16 09:44:49 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,6 @@ void	parsing_tex(t_data *data, char *str)
 			error_exit("Arguments error!\n");
 		data->map.ea_tex = ft_strtrim(str + 3, " \t");
 	}
-}
-
-int	parse_colors(t_data *data, char *str)
-{
-	if (ft_strncmp(str, "F ", 2) == 0 || ft_strncmp(str, "C ", 2) == 0)
-	{
-		if (ft_strncmp(str, "F ", 2) == 0)
-		{
-			if (data->map.f_color != -1)
-				error_exit("Arguments error!\n");
-		data->map.f_color = color_converting(ft_strtrim(str + 2, " \t"));
-		}
-		else
-		{
-			if (data->map.c_color != -1)
-				error_exit("Arguments error!\n");
-		data->map.c_color = color_converting(ft_strtrim(str + 2, " \t"));
-		}
-		return (1);
-	}
-	return (0);
 }
 
 void	parse_map(t_data *data, char *line)
