@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 18:37:17 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/16 09:57:48 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ int		parse_colors(t_data *data, char *str);
 int		ft_natoi(const char *str, int len);
 int		color_range(char *str, int *i, int *comma);
 int		color_converting(char *str);
+void	free_str_arr(char **str_arr);
 
 #endif
