@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nanicku <nanicku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:56:56 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 18:24:42 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/16 19:47:07 by nanicku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void print_data(t_data *data)
 	printf("%s\n", data->map.ea_tex);
 	printf("%s\n", data->map.we_tex);
 	printf("\n");
-	while (data->map.map_arr[y] != '\0')
+	while (data->map.map_arr[y] != 0)
 	{
 		printf("%s\n", data->map.map_arr[y++]);
 	}

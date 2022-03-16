@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nanicku <nanicku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 12:45:55 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/16 19:37:56 by nanicku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,13 @@ int		parse_colors(t_data *data, char *str);
 int		ft_natoi(const char *str, int len);
 int		color_converting(char *str);
 void	free_str_arr(char **str_arr);
+void	check_map(t_data *data);
+void	check_sympols(char **map);
+void	check_player(t_data *data);
+void	check_borders(char **map, int i);
+int		get_height_arr(char **arr);
+int		valid_symbol(char **arr, int i, int j, char s);
+void	check_plr_lock(t_data *data);
+void	check_uncorrect_postion(t_data *data, char s);
 
 #endif

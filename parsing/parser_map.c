@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nanicku <nanicku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 20:54:39 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 11:53:11 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/16 19:45:36 by nanicku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,66 @@ void	parse_map(t_data *data, char *line)
 	data->map.map_arr = (char **)malloc(sizeof(char *) * 2);
 	data->map.map_arr[0] = ft_strdup(line);
 	data->map.map_arr[1] = NULL;
+}
+
+void	check_sympols(char **map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (map[i][j] != 'N' && map[i][j] != 'E' && \
+				map[i][j] != 'S' && map[i][j] != 'W' && \
+				map[i][j] != ' ' && map[i][j] != '0' && \
+				map[i][j] != '1')
+				error_exit("The map contains forbidden symbols!\n");
+		}
+	}
+}
+
+void	check_player(t_data *data)
+{
+	int	i;
+	int	j;
+	int	player;
+	int	x;
+
+	player = 0;
+	i = -1;
+	while (data->map.map_arr[++i])
+	{
+		j = -1;
+		while (data->map.map_arr[i][++j])
+		{
+			x = data->map.map_arr[i][j];
+			if (x == 'N' || x == 'E' || x == 'S' || x == 'W')
+			{
+				data->player.dir = data->map.map_arr[i][j];
+				player++;
+				data->player.x = j;
+				data->player.y = i;
+				data->map.map_arr[i][j] = '0';
+			}
+		}
+	}
+	if (player != 1)
+		error_exit("It must be just one player!\n");
+}
+
+void	check_map(t_data *data)
+{
+	check_sympols(data->map.map_arr);
+	check_player(data);
+	check_plr_lock(data);
+	check_borders(data->map.map_arr, 0);
+	check_borders(data->map.map_arr, get_height_arr(data->map.map_arr) - 1);
+	check_uncorrect_postion(data, '0');
+	check_uncorrect_postion(data, data->player.dir);
+	if (valid_symbol(data->map.map_arr, data->player.y, data->player.x, ' '))
+		error_exit("The map is not valid!\n");
 }

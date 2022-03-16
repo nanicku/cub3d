@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_parse_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nanicku <nanicku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 18:14:08 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 18:37:59 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/16 19:14:32 by nanicku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,5 @@ void	read_and_parse_file(t_data *data, const char *map_file)
 	close(fd);
 	if (data->map.map_arr == NULL)
 		error_exit("No map!\n");
+	check_map(data);
 }
