@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nanicku <nanicku@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 19:37:56 by nanicku          ###   ########.fr       */
+/*   Updated: 2022/03/17 09:56:06 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	check_player(t_data *data);
 void	check_borders(char **map, int i);
 int		get_height_arr(char **arr);
 int		valid_symbol(char **arr, int i, int j, char s);
-void	check_plr_lock(t_data *data);
 void	check_uncorrect_postion(t_data *data, char s);
 
 #endif

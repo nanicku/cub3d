@@ -33,20 +33,6 @@ int	valid_symbol(char **arr, int i, int j, char s)
 	return (0);
 }
 
-void	check_plr_lock(t_data *data)
-{
-	int	x;
-	int	y;
-
-	x = data->player.x;
-	y = data->player.y;
-	if (data->map.map_arr[x + 1][y] == '1' && \
-		data->map.map_arr[x - 1][y] == '1' && \
-		data->map.map_arr[x][y + 1] == '1' && \
-		data->map.map_arr[x][y - 1] == '1')
-		error_exit("Player locked!\n");
-}
-
 void	check_uncorrect_postion(t_data *data, char s)
 {
 	int	i;

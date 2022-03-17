@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nanicku <nanicku@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 20:54:39 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 19:45:36 by nanicku          ###   ########.fr       */
+/*   Updated: 2022/03/17 09:55:04 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	check_map(t_data *data)
 {
 	check_sympols(data->map.map_arr);
 	check_player(data);
-	check_plr_lock(data);
 	check_borders(data->map.map_arr, 0);
 	check_borders(data->map.map_arr, get_height_arr(data->map.map_arr) - 1);
 	check_uncorrect_postion(data, '0');
