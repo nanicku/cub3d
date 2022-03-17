@@ -6,7 +6,7 @@
 /*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:06:15 by lfornio           #+#    #+#             */
-/*   Updated: 2022/03/17 12:22:05 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/17 15:26:50 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void raycasting(t_data *data)
 		distance_to_the_wall(data);
 		data->ray.line_height = (int)(W_HEIGHT / data->ray.perp_wall_dist);
 		print_line(data, i);
+		// draw_texture(data, i);
 		// print_texture(data, i);
 		i++;
 	}

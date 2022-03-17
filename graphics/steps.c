@@ -6,7 +6,7 @@
 /*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:32:35 by lfornio           #+#    #+#             */
-/*   Updated: 2022/03/17 12:45:13 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/17 15:39:03 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,4 @@ void steps(int key, t_data *data)
 		make_step(data, -data->ray.vec_x, -data->ray.vec_y);
 	else if (key == W)
 		make_step(data, data->ray.vec_x, data->ray.vec_y);
-	draw(data);
 }

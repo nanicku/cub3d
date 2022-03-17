@@ -6,7 +6,7 @@
 /*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:16:02 by lfornio           #+#    #+#             */
-/*   Updated: 2022/03/17 12:47:54 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/17 15:33:32 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ void move(t_data *data)
 {
 	mlx_hook(data->win.win, 2, 1L << 0, press_key, data);
 	mlx_hook(data->win.win, 17, 1L << 0, step_exit, data);
+	mlx_loop_hook(data->win.mlx, draw, data);
 	mlx_loop(data->win.mlx);
 }

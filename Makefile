@@ -17,11 +17,13 @@ SRC		= main.c \
 			graphics/graphics.c \
 			graphics/raycasting.c \
 			graphics/info_for_rays.c \
+			graphics/info_for_texture.c \
 			graphics/init_mlx.c \
 			graphics/move.c \
 			graphics/draw.c \
 			graphics/steps.c \
 			graphics/rotation.c \
+			graphics/texture.c \
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
