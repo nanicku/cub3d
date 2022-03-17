@@ -14,6 +14,14 @@ SRC		= main.c \
 			parsing/texture.c \
 			parsing/errors_parsing.c \
 			parsing/check_map.c \
+			graphics/graphics.c \
+			graphics/raycasting.c \
+			graphics/info_for_rays.c \
+			graphics/init_mlx.c \
+			graphics/move.c \
+			graphics/draw.c \
+			graphics/steps.c \
+			graphics/rotation.c \
 
 OBJ = $(patsubst %.c, %.o, $(SRC))
 
@@ -39,7 +47,7 @@ clean:
 		@rm -f $(OBJ)
 		@make -C libft clean
 		@make -C mlx clean
-		
+
 fclean:	clean
 		@rm -f ${NAME}
 		@rm -f libft/libft.a
@@ -48,5 +56,5 @@ fclean:	clean
 		@rm -rf */a.out*
 		@rm -rf *.gch
 		@rm -rf */*.gch
-		
+
 re:		fclean all

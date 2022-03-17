@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/17 09:56:06 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/17 12:59:35 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # include <stdlib.h>
 # include <errno.h>
 # include <string.h>
+# include <math.h>
 # include "mlx/mlx.h"
 # include "libft/libft.h"
 
-# define W_WIDTH 	800
-# define W_HEIGHT	600
+# define W_WIDTH 	1920
+# define W_HEIGHT	1080
 
 // colors
 # define RED		"\033[31;1m"
@@ -38,6 +39,10 @@
 # define LEFT		123
 # define RIGHT		124
 # define ESC		53
+
+//move
+# define STEP		0.15
+# define ROT		0.03
 
 typedef struct s_win
 {
@@ -63,12 +68,51 @@ typedef struct s_map
 	char	*we_tex ;
 }	t_map;
 
+typedef struct s_ray
+{
+	double	pl_x;
+	double	pl_y;
+	double	vec_x;
+	double	vec_y;
+	double	plane_x;
+	double	plane_y;
+	double	ray_vec_x;
+	double	ray_vec_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}	t_ray;
+
+typedef struct s_back
+{
+	void	*back_ptr;
+	char	*addr;
+	int		bpp;
+	int		size_line;
+	int		endian;
+}	t_back;
+
 typedef struct s_data
 {
 	t_win		win;
 	t_player	player;
 	t_map		map;
+	t_ray		ray;
+	t_back		back;
+
 }	t_data;
+
+/*--------------------parsing-----------------------*/
 
 int		main(int argc, char **argv);
 t_data	*init_data(void);
@@ -93,5 +137,18 @@ void	check_borders(char **map, int i);
 int		get_height_arr(char **arr);
 int		valid_symbol(char **arr, int i, int j, char s);
 void	check_uncorrect_postion(t_data *data, char s);
+
+/*--------------------graphics-----------------------*/
+
+void	graphics(t_data *data);
+void	init_ray_struct(t_data *data);
+void	init_mlx(t_data *data);
+void	move(t_data *data);
+void	ft_pix_put(t_back *back, int x, int y, int color);
+void	raycasting(t_data *data);
+void	print_line(t_data *data, int x);
+void	steps(int key, t_data *data);
+void	draw(t_data *data);
+void	rotations(int key, t_data *data);
 
 #endif
