@@ -6,7 +6,7 @@
 /*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:56:56 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/17 10:29:39 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/17 10:41:58 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 	data = init_data();
 	read_and_parse_file(data, argv[1]);
 	print_data(data);
-	printf("TEST\n");
+	printf("TEST2\n");
 	free_data(data);
 	return (0);
 }
