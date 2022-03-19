@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nanicku <nanicku@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:56:56 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 19:47:07 by nanicku          ###   ########.fr       */
+/*   Updated: 2022/03/17 11:17:56 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void print_data(t_data *data)
-{
-	int	y = 0;
+// static void print_data(t_data *data)
+// {
+// 	int	y = 0;
 
-	printf("%d\n", data->player.x);
-	printf("%d\n", data->player.y);
-	printf("%c\n", data->player.dir);
-	printf("\n");
-	printf("%d\n", data->map.f_color);
-	printf("%d\n", data->map.c_color);
-	printf("\n");
-	printf("%s\n", data->map.no_tex);
-	printf("%s\n", data->map.so_tex);
-	printf("%s\n", data->map.ea_tex);
-	printf("%s\n", data->map.we_tex);
-	printf("\n");
-	while (data->map.map_arr[y] != 0)
-	{
-		printf("%s\n", data->map.map_arr[y++]);
-	}
-	printf("\n");
-}
+// 	printf("%d\n", data->player.x);
+// 	printf("%d\n", data->player.y);
+// 	printf("%c\n", data->player.dir);
+// 	printf("\n");
+// 	printf("%d\n", data->map.f_color);
+// 	printf("%d\n", data->map.c_color);
+// 	printf("\n");
+// 	printf("%s\n", data->map.no_tex);
+// 	printf("%s\n", data->map.so_tex);
+// 	printf("%s\n", data->map.ea_tex);
+// 	printf("%s\n", data->map.we_tex);
+// 	printf("\n");
+// 	while (data->map.map_arr[y] != 0)
+// 	{
+// 		printf("%s\n", data->map.map_arr[y++]);
+// 	}
+// 	printf("\n");
+// }
 
 int	main(int argc, char **argv)
 {
@@ -46,7 +46,8 @@ int	main(int argc, char **argv)
 	}
 	data = init_data();
 	read_and_parse_file(data, argv[1]);
-	print_data(data);
+	// print_data(data);
+	graphics(data);
 	free_data(data);
 	return (0);
 }
