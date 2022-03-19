@@ -6,21 +6,23 @@
 /*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:32:35 by lfornio           #+#    #+#             */
-/*   Updated: 2022/03/17 15:39:03 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/19 18:14:46 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void make_step(t_data *data, double v_x, double v_y)
+void	make_step(t_data *data, double v_x, double v_y)
 {
-	if (data->map.map_arr[(int)data->ray.pl_y][(int)(data->ray.pl_x + v_x * STEP)] != '1')
+	if (data->map.map_arr[(int)data->ray.pl_y]
+		[(int)(data->ray.pl_x + v_x * STEP)] != '1')
 		data->ray.pl_x += v_x * STEP;
-	if (data->map.map_arr[(int)(data->ray.pl_y + v_y * STEP)][(int)data->ray.pl_x] != '1')
+	if (data->map.map_arr[(int)(data->ray.pl_y + v_y * STEP)]
+		[(int)data->ray.pl_x] != '1')
 		data->ray.pl_y += v_y * STEP;
 }
 
-void steps(int key, t_data *data)
+void	steps(int key, t_data *data)
 {
 	if (key == D)
 		make_step(data, data->ray.plane_x, data->ray.plane_y);

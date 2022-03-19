@@ -1,43 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   raycasting_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 12:06:15 by lfornio           #+#    #+#             */
-/*   Updated: 2022/03/17 15:26:50 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/19 18:12:45 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void ray_direction(t_data *data, int x)
+void	ray_direction(t_data *data, int x)
 {
-	double camera_x;
+	double	camera_x;
 
 	camera_x = 2 * x / (double)W_WIDTH - 1;
 	data->ray.ray_vec_x = data->ray.vec_x + data->ray.plane_x * camera_x;
 	data->ray.ray_vec_y = data->ray.vec_y + data->ray.plane_y * camera_x;
-}
-
-void ray_start(t_data *data)
-{
 	data->ray.map_x = (int)data->ray.pl_x;
 	data->ray.map_y = (int)data->ray.pl_y;
 }
 
-void distance_between_lines(t_data *data)
+void	distance_between_lines(t_data *data)
 {
 	if (data->ray.ray_vec_x)
 		data->ray.delta_dist_x = fabs(1 / data->ray.ray_vec_x);
-	else
-		data->ray.delta_dist_x = 1e30;
-
 	if (data->ray.ray_vec_y)
 		data->ray.delta_dist_y = fabs(1 / data->ray.ray_vec_y);
-	else
-		data->ray.delta_dist_y = 1e30;
 }
 
 void	steps_and_start_distance(t_data *data)
@@ -70,7 +61,7 @@ void	steps_and_start_distance(t_data *data)
 
 void	flag_wall(t_data *data)
 {
-	int hit;
+	int	hit;
 
 	hit = 0;
 	while (hit == 0)
@@ -85,38 +76,27 @@ void	flag_wall(t_data *data)
 		{
 			data->ray.side_dist_y += data->ray.delta_dist_y;
 			data->ray.map_y += data->ray.step_y;
-			data->ray.side  = 1;
+			data->ray.side = 1;
 		}
 		if (data->map.map_arr[data->ray.map_y][data->ray.map_x] == '1')
 			hit = 1;
 	}
 }
 
-void distance_to_the_wall(t_data *data)
+void	raycasting(t_data *data)
 {
-	if (data->ray.side == 0)
-		data->ray.perp_wall_dist = (data->ray.side_dist_x - data->ray.delta_dist_x);
-	else
-		data->ray.perp_wall_dist = (data->ray.side_dist_y - data->ray.delta_dist_y);
-}
-
-void raycasting(t_data *data)
-{
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < W_WIDTH)
 	{
 		ray_direction(data, i);
-		ray_start(data);
 		distance_between_lines(data);
 		steps_and_start_distance(data);
 		flag_wall(data);
 		distance_to_the_wall(data);
-		data->ray.line_height = (int)(W_HEIGHT / data->ray.perp_wall_dist);
-		print_line(data, i);
-		// draw_texture(data, i);
-		// print_texture(data, i);
+		height_line(data);
+		draw_walls(data, i);
 		i++;
 	}
 }

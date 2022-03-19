@@ -15,7 +15,8 @@ SRC		= main.c \
 			parsing/errors_parsing.c \
 			parsing/check_map.c \
 			graphics/graphics.c \
-			graphics/raycasting.c \
+			graphics/raycasting_1.c \
+			graphics/raycasting_2.c \
 			graphics/info_for_rays.c \
 			graphics/info_for_texture.c \
 			graphics/init_mlx.c \

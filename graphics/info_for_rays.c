@@ -6,7 +6,7 @@
 /*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 10:52:03 by lfornio           #+#    #+#             */
-/*   Updated: 2022/03/17 12:27:21 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/19 18:08:59 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	init_fov(t_data *data)
 	}
 }
 
-void init_ray_struct(t_data *data)
+void	init_ray_struct(t_data *data)
 {
 	data->ray.pl_x = (double)data->player.x + 0.5;
 	data->ray.pl_y = (double)data->player.y + 0.5;
@@ -82,6 +82,3 @@ void init_ray_struct(t_data *data)
 	data->ray.draw_start = 0;
 	data->ray.draw_end = 0;
 }
-
-
-

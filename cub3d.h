@@ -6,7 +6,7 @@
 /*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/17 15:37:57 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/19 18:16:40 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define W_WIDTH 	1920
 # define W_HEIGHT	1080
-# define TEX	240
+# define TEX		512
 
 // colors
 # define RED		"\033[31;1m"
@@ -43,7 +43,7 @@
 
 //move
 # define STEP		0.2
-# define ROT		0.03
+# define ROT		0.07
 
 typedef struct s_win
 {
@@ -106,7 +106,7 @@ typedef struct s_back
 typedef struct s_img
 {
 	void	*img_ptr;
-	char	*addr;
+	int		*addr;
 	int		bpp;
 	int		size_line;
 	int		endian;
@@ -118,13 +118,11 @@ typedef struct s_tex
 	int		tex_num;
 	int		tex_flag;
 	int		tex_x;
+	int		tex_y;
 	double	wall_x;
 	double	step;
 	double	tex_pos;
 }	t_tex;
-
-
-
 
 typedef struct s_data
 {
@@ -176,7 +174,12 @@ void	print_line(t_data *data, int x);
 void	steps(int key, t_data *data);
 int		draw(t_data *data);
 void	rotations(int key, t_data *data);
-void	draw_texture(t_data *data, int x);
+void	draw_walls(t_data *data, int x);
 void	init_image_back(t_data *data);
+void	height_line(t_data *data);
+void	get_flag_wall(t_data *data);
+void	get_x_from_texture(t_data *data);
+int		get_color(t_data *data);
+void	distance_to_the_wall(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 11:16:02 by lfornio           #+#    #+#             */
-/*   Updated: 2022/03/17 15:33:32 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/19 16:51:09 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ int	press_key(int key, t_data *data)
 		steps(key, data);
 	else if (key == LEFT || key == RIGHT)
 		rotations(key, data);
-
 	return (0);
 }
 
-void move(t_data *data)
+void	move(t_data *data)
 {
 	mlx_hook(data->win.win, 2, 1L << 0, press_key, data);
 	mlx_hook(data->win.win, 17, 1L << 0, step_exit, data);
