@@ -2,7 +2,7 @@ NAME	= cub3d
 HEADER	= cub3d.h
 
 CC		= cc
-FLAGS	= -Wall -Werror -Wextra
+FLAGS	= -Wall -Werror -Wextra -g
 CFLAGS	= $(FLAGS) -I. -Imlx -Ilibft
 OPTFLAGS = -O2
 
@@ -26,7 +26,32 @@ SRC		= main.c \
 			graphics/rotation.c \
 			graphics/texture.c \
 
-OBJ = $(patsubst %.c, %.o, $(SRC))
+SRC_BONUS	= main.c \
+			parsing/init_data.c \
+			parsing/read_parse_file.c \
+			parsing/parser_map.c \
+			parsing/color.c \
+			parsing/texture.c \
+			parsing/errors_parsing.c \
+			parsing/check_map.c \
+			graphics_bonus/graphics.c \
+			graphics_bonus/raycasting_1.c \
+			graphics_bonus/raycasting_2.c \
+			graphics_bonus/info_for_rays.c \
+			graphics_bonus/info_for_texture.c \
+			graphics_bonus/init_mlx.c \
+			graphics_bonus/move.c \
+			graphics_bonus/draw.c \
+			graphics_bonus/steps.c \
+			graphics_bonus/rotation.c \
+			graphics_bonus/texture.c \
+			graphics_bonus/mini_map.c \
+
+ifeq ($(MAKECMDGOALS),bonus)
+	OBJ = $(patsubst %.c, %.o, $(SRC_BONUS))
+else
+	OBJ = $(patsubst %.c, %.o, $(SRC))
+endif
 
 .PHONY:	all clean fclean re libft mlx
 
@@ -40,6 +65,9 @@ all:	mlx libft ${NAME}
 $(NAME): $(OBJ) $(HEADER)
 		@$(CC) $(OBJ) $(LIBFT_A) -Llibft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
 
+bonus:	mlx libft $(NAME)
+
+
 mlx:
 		@make -C mlx/
 
@@ -48,6 +76,7 @@ libft:
 
 clean:
 		@rm -f $(OBJ)
+		@rm -f graphics_bonus/*.o
 		@make -C libft clean
 		@make -C mlx clean
 
