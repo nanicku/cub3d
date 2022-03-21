@@ -6,7 +6,7 @@
 /*   By: nanicku <nanicku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 21:08:16 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/21 16:50:47 by nanicku          ###   ########.fr       */
+/*   Updated: 2022/03/21 18:22:31 by nanicku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ int	parse_colors(t_data *data, char *str)
 		{
 			if (data->map.f_color != -1)
 				error_exit("Arguments error!\n");
-		data->map.f_color = color_converting(ft_strtrim(str + 2, " \t"));
+			data->map.f_color = color_converting(ft_strtrim(str + 2, " \t"));
 		}
 		else
 		{
 			if (data->map.c_color != -1)
 				error_exit("Arguments error!\n");
-		data->map.c_color = color_converting(ft_strtrim(str + 2, " \t"));
+			data->map.c_color = color_converting(ft_strtrim(str + 2, " \t"));
 		}
 		return (1);
 	}
