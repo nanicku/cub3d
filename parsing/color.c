@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: nanicku <nanicku@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 21:08:16 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 11:37:27 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/21 16:50:47 by nanicku          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	color_converting(char *str)
 	}
 	result = rgb_to_hex(ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
 	free_str_arr(rgb);
+	free(str);
 	return (result);
 }
 

@@ -1,83 +1,97 @@
 #include "libft.h"
 
-static void	ft_strclr(char **s)
+static char	*m_str(char *s)
 {
-	if (*s)
+	int		i;
+	char	*str;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i] && s[i] != '\n')
+		i++;
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (str == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i] && s[i] != '\n')
 	{
-		free(*s);
-		*s = NULL;
+		str[i] = s[i];
+		i++;
 	}
+	str[i] = '\0';
+	return (str);
 }
 
-static char	*ft_check_last(char **last, char **line)
+static char	*m_remains(char *s)
 {
-	char	*ptr;
+	char	*str;
+	int		i;
+	int		j;
 
-	ptr = NULL;
-	if (*last != NULL)
+	i = 0;
+	j = 0;
+	if (!s)
+		return (0);
+	while (s[i] && s[i] != '\n')
+		i++;
+	str = (char *)malloc(sizeof(char) * ((ft_strlen(s) - i) + 1));
+	if (str == NULL)
+		return (NULL);
+	i = i + 1;
+	while (s[i])
 	{
-		ptr = ft_strchr(*last, '\n');
-		if (ptr)
-		{
-			*ptr = '\0';
-			ptr++;
-			*line = ft_strdup(*last);
-			if (*ptr)
-				ft_strcpy(*last, ptr);
-			else
-				ft_strclr(&*last);
-		}
-		else
-		{
-			*line = ft_strdup(*last);
-			ft_strclr(&*last);
-		}
+		str[j] = s[i];
+		j++;
+		i++;
 	}
-	else
-		*line = ft_strdup("");
-	return (ptr);
+	str[j] = '\0';
+	free (s);
+	return (str);
 }
 
-static int	gnl_init(int fd, char **buf, char **line)
+static int	m_return_error(int fd, char **line, char **buffer)
 {
 	if (!line || fd < 0 || fd > 1024 || BUFFER_SIZE < 1 || read(fd, 0, 0) < 0)
 		return (0);
-	*buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!*buf)
+	*buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (*buffer == NULL)
 		return (0);
 	return (1);
 }
 
-static int	ft_check_z(char *str)
+static int	end_read(char **save, char **line)
 {
-	if (str)
-		return (1);
+	*line = ft_strdup(*save);
+	free (*save);
+	*save = NULL;
 	return (0);
 }
 
 int	get_next_line(int fd, char **line)
 {
-	char			*buf;
-	char			*ptr;
-	int				n;
-	static char		*last[1024];
+	int			res_read;
+	char		*buffer;
+	static char	*save;
 
-	if (!gnl_init(fd, &buf, &(*line)))
+	res_read = 1;
+	if (m_return_error(fd, &(*line), &buffer) == 0)
 		return (-1);
-	ptr = ft_check_last(&last[fd], line);
-	n = 1;
-	while ((!ptr) && n)
+	if (!save)
+		save = ft_strnew(1);
+	while (new_str(save) == 0 && res_read > 0)
 	{
-		n = read(fd, buf, BUFFER_SIZE);
-		buf[n] = '\0';
-		ptr = ft_strchr(buf, '\n');
-		if (ptr)
-		{
-			*ptr++ = '\0';
-			last[fd] = ft_strdup(ptr);
-		}
-		*line = ft_strjoin(*line, buf);
+		res_read = read(fd, buffer, BUFFER_SIZE);
+		buffer[res_read] = '\0';
+		save = ft_strjoin_free(save, buffer);
 	}
-	free(buf);
-	return (ft_check_z(ptr));
+	free (buffer);
+	if (new_str(save))
+	{
+		*line = m_str(save);
+		save = m_remains(save);
+	}
+	if (res_read == 0)
+		return (end_read(&save, &(*line)));
+	return (1);
 }
