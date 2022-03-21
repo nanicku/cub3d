@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nanicku <nanicku@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/10 13:03:24 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/21 16:46:56 by nanicku          ###   ########.fr       */
+/*   Created: 2022/03/21 19:46:43 by mshad             #+#    #+#             */
+/*   Updated: 2022/03/21 19:48:23 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		get_next_line(int fd, char **line);
 char	*ft_strnew(size_t size);
-int     new_str(char *s);
+int		new_str(char *s);
 char	*ft_strjoin_free(char *s1, char *s2);
 
 #endif
