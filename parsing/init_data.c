@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 16:29:06 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 12:45:07 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/21 18:29:05 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ t_data	*init_data(void)
 	data = (t_data *)malloc(sizeof(t_data));
 	if (!data)
 		error_exit("Malloc failed!\n");
-	// data->win.mlx = mlx_init();
-	// data->win.win = mlx_new_window(data->win.mlx, W_WIDTH, W_HEIGHT, "cub3d");
-	// data->img.img = mlx_new_image(data->win.mlx, W_WIDTH, W_HEIGHT);
 	data->player.x = -1;
 	data->player.y = -1;
 	data->player.dir = -1;
@@ -36,7 +33,7 @@ t_data	*init_data(void)
 }
 
 void	free_data(t_data *data)
-{	
+{
 	int	i;
 
 	i = -1;
