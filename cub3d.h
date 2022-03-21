@@ -6,7 +6,7 @@
 /*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 13:57:01 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/19 18:16:40 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/21 17:25:16 by lfornio          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define W_WIDTH 	1920
 # define W_HEIGHT	1080
 # define TEX		512
+# define MINI		9
+# define PLAYER		3
 
 // colors
 # define RED		"\033[31;1m"
@@ -42,8 +44,8 @@
 # define ESC		53
 
 //move
-# define STEP		0.2
-# define ROT		0.07
+# define STEP		0.1
+# define ROT		0.05
 
 typedef struct s_win
 {
@@ -181,5 +183,11 @@ void	get_flag_wall(t_data *data);
 void	get_x_from_texture(t_data *data);
 int		get_color(t_data *data);
 void	distance_to_the_wall(t_data *data);
+
+/*-------------------bonus------------------------*/
+
+void	draw_mini_map(t_data *data);
+void	draw_player(t_data *data);
+int		error_mini_map(t_data *data);
 
 #endif
