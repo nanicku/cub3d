@@ -2,7 +2,7 @@ NAME	= cub3D
 HEADER	= cub3d.h
 
 CC		= cc
-FLAGS	= -Wall -Werror -Wextra -g
+FLAGS	= -Wall -Werror -Wextra
 CFLAGS	= $(FLAGS) -I. -Imlx -Ilibft
 OPTFLAGS = -O2
 
@@ -11,6 +11,7 @@ SRC		= main.c \
 			parsing/read_parse_file.c \
 			parsing/parser_map.c \
 			parsing/color.c \
+			parsing/color2.c \
 			parsing/texture.c \
 			parsing/errors_parsing.c \
 			parsing/check_map.c \
@@ -31,6 +32,7 @@ SRC_BONUS	= main.c \
 			parsing/read_parse_file.c \
 			parsing/parser_map.c \
 			parsing/color.c \
+			parsing/color2.c \
 			parsing/texture.c \
 			parsing/errors_parsing.c \
 			parsing/check_map.c \

@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:37:54 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/21 19:37:55 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/21 21:58:01 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,53 @@
 static int	rgb_to_hex(int red, int green, int blue)
 {
 	return ((((red * 256) + green) * 256) + blue);
+}
+
+static int	check_split(char **arr)
+{
+	int		x;
+	int		y;
+
+	x = -1;
+	while (++x != 3)
+	{
+		y = -1;
+		while (arr[x][++y])
+		{
+			if (ft_isalpha(arr[x][y]) == 1)
+				return (1);
+		}
+	}
+	return (0);
+}
+
+static int	check_split2(char **arr)
+{
+	int		x;
+	char	**rgb1;
+	int		result;
+
+	x = -1;
+	while (++x != 3)
+	{
+		result = 0;
+		rgb1 = ft_split(arr[x], ' ');
+		while (rgb1[result])
+			result++;
+		if (result != 1)
+		{
+			free_str_arr(rgb1);
+			return (1);
+		}
+		free_str_arr(rgb1);
+	}
+	return (0);
+}
+
+static void	ft_free_and_exit(char **arr)
+{
+	free_str_arr(arr);
+	error_exit("Invalid color!\n");
 }
 
 int	color_converting(char *str)
@@ -27,40 +74,17 @@ int	color_converting(char *str)
 	while (rgb[result])
 		result++;
 	if (result != 3)
-	{
-		free_str_arr(rgb);
-		error_exit("Invalid color!\n");
-	}
+		ft_free_and_exit(rgb);
+	if (check_split(rgb) == 1)
+		ft_free_and_exit(rgb);
+	if (check_split2(rgb) == 1)
+		ft_free_and_exit(rgb);
 	if (ft_atoi(rgb[0]) < 0 || ft_atoi(rgb[0]) > 255
 		|| ft_atoi(rgb[1]) < 0 || ft_atoi(rgb[1]) > 255
 		|| ft_atoi(rgb[2]) < 0 || ft_atoi(rgb[2]) > 255)
-	{
-		free_str_arr(rgb);
-		error_exit("Invalid color!\n");
-	}
+		ft_free_and_exit(rgb);
 	result = rgb_to_hex(ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
 	free_str_arr(rgb);
 	free(str);
 	return (result);
-}
-
-int	parse_colors(t_data *data, char *str)
-{
-	if (ft_strncmp(str, "F ", 2) == 0 || ft_strncmp(str, "C ", 2) == 0)
-	{
-		if (ft_strncmp(str, "F ", 2) == 0)
-		{
-			if (data->map.f_color != -1)
-				error_exit("Arguments error!\n");
-			data->map.f_color = color_converting(ft_strtrim(str + 2, " \t"));
-		}
-		else
-		{
-			if (data->map.c_color != -1)
-				error_exit("Arguments error!\n");
-			data->map.c_color = color_converting(ft_strtrim(str + 2, " \t"));
-		}
-		return (1);
-	}
-	return (0);
 }

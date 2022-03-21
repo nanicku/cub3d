@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lfornio <lfornio@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 19:07:35 by lfornio           #+#    #+#             */
-/*   Updated: 2022/03/21 17:22:20 by lfornio          ###   ########.fr       */
+/*   Updated: 2022/03/21 20:20:15 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,9 @@ int	error_mini_map(t_data *data)
 	a = (int)ft_strlen(data->map.map_arr[0]);
 	if (a * MINI > W_WIDTH || b * MINI > W_HEIGHT)
 	{
-		write(2, "Error\n", 6);
-		write(2, "Mini_map is very big\n", 21);
+		printf(RED"Error\n");
+		ft_putstr_fd("Mini_map is very big\n", 2);
+		printf(RESET"");
 		return (1);
 	}
 	return (0);

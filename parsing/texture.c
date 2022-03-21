@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 11:52:47 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/16 12:50:24 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/21 20:05:46 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ void	check_tex(char *str)
 	if (fd == -1 || ft_strncmp(format, ".xpm", 4) != 0)
 	{
 		free(format);
-		ft_putstr_fd("Error\nLink for a texture is incorrect\n", 2);
-		exit(1);
+		error_exit("Link for a texture is incorrect\n");
 	}
 	free(format);
 	close(fd);

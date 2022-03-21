@@ -6,7 +6,7 @@
 /*   By: mshad <mshad@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/13 11:52:44 by mshad             #+#    #+#             */
-/*   Updated: 2022/03/13 18:38:55 by mshad            ###   ########.fr       */
+/*   Updated: 2022/03/21 20:18:18 by mshad            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ void	error_exit(char *str)
 {
 	printf(RED"Error\n");
 	ft_putstr_fd(str, 2);
+	printf(RESET"");
 	exit(1);
 }
